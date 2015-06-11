@@ -24,7 +24,7 @@ import interactivespaces.activity.impl.ros.BaseRoutableRosActivity;
 import interactivespaces.service.comm.serial.SerialCommunicationEndpoint;
 import interactivespaces.service.comm.serial.SerialCommunicationEndpointService;
 import interactivespaces.util.concurrency.CancellableLoop;
-import interactivespaces.util.data.json.JsonBuilder;
+import interactivespaces.util.data.json.StandardJsonBuilder;
 import interactivespaces.util.resource.ManagedResourceWithTask;
 
 /**
@@ -59,7 +59,7 @@ public class MaxbotixReaderActivity extends BaseRoutableRosActivity {
 
     if (isActivated()) {
       ProximityEvent proxEvent = new ProximityEvent(distance, presence);
-      JsonBuilder message = new JsonBuilder();
+      StandardJsonBuilder message = new StandardJsonBuilder();
       ProximityMessages.serializeProximityEvent(proxEvent, message);
       sendOutputJsonBuilder("proximity", message);
     }

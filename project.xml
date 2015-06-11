@@ -6,10 +6,32 @@ Reader for Maxbotix proximity sensor.
   </description>
 
   <identifyingName>com.endpoint.lg.maxbotix.reader</identifyingName>
-  <version>1.0.0.dev</version>
+  <version>1.1.0</version>
 
   <deployments>
     <deployment type="testdeploy" location="${deployment.test.deploy}" />
     <deployment type="testimport" location="${deployment.test.import}" />
   </deployments>
+
+  <activity type="interactivespaces_native">
+      <class>com.endpoint.lg.maxbotix.reader.MaxbotixReaderActivity</class>
+      <name>comEndpointLgMaxbotixReader</name>
+      <configuration>
+          <property name="space.activity.log.level">
+              <value>info</value>
+          </property>
+          <property name="space.activity.ros.node.name">
+              <value>liquidgalaxy/maxbotix/reader/${space.activity.group}</value>
+          </property>
+          <property name="space.activity.routes.outputs">
+              <value>proximity</value>
+          </property>
+          <property name="space.activity.route.output.proximity">
+              <value>/liquidgalaxy/${space.activity.group}/maxbotix/proximity</value>
+          </property>
+          <property name="lg.maxbotix.reader.device">
+              <value>/dev/ttyUSB0</value>
+          </property>
+      </configuration>
+  </activity>
 </project>
